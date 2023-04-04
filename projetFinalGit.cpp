@@ -2,10 +2,10 @@
 //
 
 #include <iostream>
-
+#include "structuresPieces.hpp"
 int main()
 {
-    std::cout << "Patrice is the boss.\n";
+    std::cout << "Patrice isthe boss.\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
