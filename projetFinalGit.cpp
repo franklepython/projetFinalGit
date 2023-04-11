@@ -3,9 +3,22 @@
 
 #include <iostream>
 #include "structuresPieces.hpp"
+#include <memory>
+
+
+bool Roi::moveEstLegal() const {
+    return true;
+}
+
 int main()
 {
-    std::cout << "Patrice isthe boss.\n";
+    Echiquier echiquier;
+
+   Roi roi("Roi", "blanc");
+
+  
+
+   return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
