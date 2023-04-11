@@ -7,55 +7,55 @@ class Echiquier {
 
 public:
 	Echiquier() = default;
-	~Echiquier();
-
-	void ajouterPiece(Piece piece, int pos);
-	void peutAjouterPiece(Piece piece, int pos); 
-	friend class Piece;
+	~Echiquier() = default;
 
 private:
-	int nPieces_ = 0;
-	static const int nPiecesMax_ = 64;
-	int echiquier[nPiecesMax_-1];
+	int echiquier[7][7]; // contient des pointeurs vers des pieces
 };
 
 
-// Une classe abstraite pour représenter une pièce
-// Chaque piece va voir un echiquier commun comme attribut
 class Piece {
 public:
-	Piece(std::string couleur) : couleur_(couleur) {}
+	Piece(std::string nom, std::string couleur) : nom_(nom), couleur_(couleur) {}
+	Piece() = default;
 	virtual ~Piece() {};
 
-	virtual void avancer() = 0;
+	virtual bool moveEstLegal() const = 0;
 
 protected:
-	std::string couleur_ ;
+	std::string nom_;
+	std::string couleur_;
+
 };
 
 
 class Roi : public Piece {
 
 public:
-	Roi(std::string nom, std::string couleur, Echiquier* ptrEchiquier) : Piece(couleur), echiquier_(ptrEchiquier) {};
-	~Roi();
+	Roi(std::string nom, std::string couleur) : nom_(nom), couleur_(couleur) {};
+	
 
 
 private:
-	Echiquier* echiquier_;
-
+	
+	std::string nom_;
+	std::string couleur_;
+	virtual bool moveEstLegal() const override;
 };
 
 
 
-class Pion : public Piece {
+/*class Pion : public Piece {
 public:
-	Pion(std::string nom, std::string couleur, Echiquier* ptrEchiquier) : Piece(couleur), echiquier_(ptrEchiquier) {};
-	~Pion();
+	Pion(std::string nom, std::string couleur) : nom_(nom), couleur_(couleur) {};
+	~Pion() = default;
+
 
 private:
-	Echiquier* echiquier_;
-
+	
+	std::string nom_;
+	std::string couleur_;
+	virtual bool moveEstLegal() const override;
 };
 
 
@@ -63,12 +63,16 @@ private:
 class Tour : public Piece {
 public:
 
-	Tour(std::string nom, std::string couleur, Echiquier* ptrEchiquier) : Piece(couleur), echiquier_(ptrEchiquier) {};
+	Tour(std::string nom, std::string couleur, Echiquier* ptrEchiquier) : Piece(nom, couleur) {};
 	~Tour();
 
-private:
-	Echiquier* echiquier_;
 
-};
+private:
+
+	std::string nom_;
+	std::string couleur_;
+	virtual bool moveEstLegal() const override;
+
+};*/
 
 
