@@ -10,13 +10,13 @@ public:
 	~Echiquier() = default;
 
 private:
-	int echiquier[7][7]; // contient des pointeurs vers des pieces
+	int echiquier[8][8]; // contient des pointeurs vers des pieces
 };
 
 
 class Piece {
 public:
-	Piece(std::string nom, std::string couleur) : nom_(nom), couleur_(couleur) {}
+	Piece(std::string nom, std::string couleur, std::shared_ptr<Echiquier> ptrEchiquier) : nom_(nom), couleur_(couleur), ptrEchiquier_(ptrEchiquier){}
 	Piece() = default;
 	virtual ~Piece() {};
 
@@ -25,21 +25,24 @@ public:
 protected:
 	std::string nom_;
 	std::string couleur_;
-
+	int pos_[2];
+	std::shared_ptr<Echiquier> ptrEchiquier_;
 };
 
 
 class Roi : public Piece {
 
 public:
-	Roi(std::string nom, std::string couleur) : nom_(nom), couleur_(couleur) {};
-	
+	Roi(std::string nom, std::string couleur, std::shared_ptr<Echiquier> ptrEchiquier) : nom_(nom), couleur_(couleur), ptrEchiquier_(ptrEchiquier){};
+	~Roi() = default;
 
 
 private:
-	
 	std::string nom_;
 	std::string couleur_;
+	int pos_[2];
+	std::shared_ptr<Echiquier> ptrEchiquier_;
+
 	virtual bool moveEstLegal() const override;
 };
 
