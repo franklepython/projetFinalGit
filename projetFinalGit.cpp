@@ -14,7 +14,9 @@ int main()
 {
     Echiquier echiquier;
 
-   Roi roi("Roi", "blanc");
+    std::shared_ptr<Echiquier> ptrEchiquier = std::make_shared<Echiquier>(echiquier);
+
+   Roi roi("Roi", "blanc", ptrEchiquier);
 
   
 
