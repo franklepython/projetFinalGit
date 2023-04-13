@@ -5,7 +5,7 @@
 #include "structuresPieces.hpp"
 int main()
 {
-    std::cout << "Patrice isthe boss.\n";
+    std::cout << "Patrice is not the boss.\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
