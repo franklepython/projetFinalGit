@@ -3,9 +3,24 @@
 
 #include <iostream>
 #include "structuresPieces.hpp"
+#include <memory>
+
+
+bool Roi::moveEstLegal() const {
+    return true;
+}
+
 int main()
 {
-    std::cout << "Patrice is not the boss.\n";
+    Echiquier echiquier;
+
+    std::shared_ptr<Echiquier> ptrEchiquier = std::make_shared<Echiquier>(echiquier);
+
+   Roi roi("Roi", "blanc", ptrEchiquier);
+
+  
+
+   return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
